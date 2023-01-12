@@ -1,14 +1,14 @@
 import java.util.Objects;
 import java.util.Scanner;
 public class Baza {
-    Scanner scan = new Scanner(System.in);
-    int wiek;
-    Baza[] account = new Baza[2];
-    String imie, nazwisko;
-    String nazwaKonta, haslo, phaslo, email;
-    Baza user;
-    int pozycja = 0;
-    char r;
+    private Scanner scan = new Scanner(System.in);
+    private int wiek;
+    private final Baza[] account = new Baza[2];
+    private String imie, nazwisko;
+    private String nazwaKonta, haslo, phaslo, email;
+    private Baza user;
+    private int pozycja = 0;
+    private char r;
 
     public Baza() {
     }
@@ -95,39 +95,36 @@ public class Baza {
         }
     }
     public void loadUser() {
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
         System.out.println("###############################");
         System.out.println("####   Wczytywanie konta   ####");
         System.out.println("###############################");
         System.out.println();
         System.out.println("Podaj nazwę użytkownika");
         String load = scan.nextLine();
-        if (Objects.equals(load, account[0].nazwaKonta)) {
-            System.out.println("Wpisz hasło");
-            String pass = scan.nextLine();
-            if (Objects.equals(pass, account[0].haslo)) {
-                System.out.println("Zalogowano poprawnie, konto:" + account[0].nazwaKonta);
-                System.out.println("Witaj!");
-                System.out.println();
+        for (int licz=0;licz< account.length;licz++) {
+            if (Objects.equals(load, account[licz].nazwaKonta)) {
+                System.out.println("Wpisz hasło");
+                String pass = scan.nextLine();
+                if (Objects.equals(pass, account[licz].haslo)) {
+                    System.out.println("Zalogowano poprawnie, konto:" + account[licz].nazwaKonta);
+                    System.out.println("Witaj!");
+                    System.out.println();
+                } else {
+                    System.out.println("Błędne hasło.");
+                    loadUser();
+                    System.out.println();
+                    System.out.println();
+                }
             } else {
-                System.out.println("Błędne hasło.");
+                System.out.println("Nie ma takiego konta, spróbuj ponownie.");
                 loadUser();
                 System.out.println();
                 System.out.println();
             }
-        } else {
-            System.out.println("Nie ma takiego konta, spróbuj ponownie.");
-            loadUser();
-            System.out.println();
-            System.out.println();
         }
+    }
+    public void User(){
+        System.out.println("### Witaj "+user.nazwaKonta+" w panelu konta #####");
 
     }
 }

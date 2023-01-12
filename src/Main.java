@@ -1,8 +1,9 @@
 public class Main {
     public static void main(String[] args) {
 
-        Baza rejestracja = new Baza();
-        rejestracja.welcome();
-        rejestracja.registerUser();
+        Baza userList = new Baza();
+        userList.welcome();
+        userList.registerUser();
+        userList.User();
     }
 }
